@@ -67,7 +67,7 @@ Clone this repository, modify `config.h` appropriately, then compile the
 program:
 
 ```sh
-git clone https://github.com/UtkarshVerma/dwmblocks-async.git
+git clone https://github.com/sl903dj/dwmblocks-async.git
 cd dwmblocks-async
 vi config.h
 sudo make install
@@ -143,7 +143,7 @@ To refresh all the blocks, run `kill -10 $(pidof dwmblocks)` or
 
 Like `i3blocks`, this build allows you to build in additional actions into your
 scripts in response to click events. You can check out
-[my status bar scripts](https://github.com/UtkarshVerma/dotfiles/tree/main/.local/bin/statusbar)
+[my status bar scripts](https://github.com/sl903dj/suckless/tree/statuscmd/dwm/statusbar)
 as references for using the `$BLOCK_BUTTON` variable.
 
 To use this feature, define the `CLICKABLE_BLOCKS` feature macro in your
@@ -155,6 +155,21 @@ To use this feature, define the `CLICKABLE_BLOCKS` feature macro in your
 
 Apart from that, you need `dwm` to be patched with
 [statuscmd](https://dwm.suckless.org/patches/statuscmd/).
+
+Because `dwmblocks-async` creates a child process, it messes up the way the original `statuscmd` patch gets the PID of statusbar. It is necessary to modify the following lines in the definition of `getstatusbarpid()`.
+
+```diff
+                return statuspid;
+        }
+    }
+-   if (!(fp = popen("pidof -s "STATUSBAR, "r")))
++   if (!(fp = popen("pgrep -o "STATUSBAR, "r")))
+        return -1;
+    fgets(buf, sizeof(buf), fp);
+    pclose(fp);
+```
+
+This modification is backwards-compatible with other versions of `dwmblocks` as well.
 
 ## Credits
 
