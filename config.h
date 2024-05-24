@@ -21,7 +21,7 @@
     X("dwm_memory", 1, 1)  \
     X("dwm_cpu", 1, 2)   \
     X("dwm_disk", 1800, 3) \
-    X("dwm_network", 400, 4) \
+    X("dwm_network", 60, 4) \
     X("dwm_volume", 1, 5) \
     X("dwm_battery", 1, 6)     \
     X("dwm_lunar", 1, 7)  \
