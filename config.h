@@ -18,13 +18,14 @@
 
 // Define blocks for the status feed as X(cmd, interval, signal).
 #define BLOCKS(X)         \
-    X("dwm_memory", 1, 1)  \
-    X("dwm_cpu", 1, 2)   \
-    X("dwm_disk", 1800, 3) \
-    X("dwm_network", 60, 4) \
-    X("dwm_volume", 1, 5) \
-    X("dwm_battery", 1, 6)     \
-    X("dwm_lunar", 1, 7)  \
-    X("dwm_date", 1, 8)
+    X("dwm_capslock", 1, 1)  \
+    X("dwm_memory", 1, 2)  \
+    X("dwm_cpu", 1, 3)   \
+    X("dwm_disk", 1800, 4) \
+    X("dwm_network", 60, 5) \
+    X("dwm_volume", 1, 6) \
+    X("dwm_battery", 1, 7)     \
+    X("dwm_lunar", 1, 8)  \
+    X("dwm_date", 1, 9)
 
 #endif  // CONFIG_H
